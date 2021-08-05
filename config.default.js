@@ -107,6 +107,9 @@ module.exports = {
 
       // poolSize: size of connection pool (number of connections to use)
       poolSize: 4,
+
+      // to use the new Server Discover and Monitoring engine
+      useUnifiedTopology: true,
     },
 
     // set admin to true if you want to turn on admin features
