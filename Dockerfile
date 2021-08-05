@@ -47,6 +47,8 @@ RUN cp config.default.js config.js
 
 RUN set -x \
 	&& apt-get update && apt-get install -y git --no-install-recommends \
+        && npm config set proxy http://cs.pr-proxy.service.sd.diod.tech:3128 \
+        && npm config set https-proxy http://cs.pr-proxy.service.sd.diod.tech:3128 \
 	&& npm install \
 	&& apt-get purge --auto-remove -y git \
 	&& rm -rf /var/lib/apt/lists/*
