@@ -48,6 +48,7 @@ RUN cp config.default.js config.js
 
 RUN set -x \
 	&& apt-get update && apt-get install -y git --no-install-recommends \
+        && git config --global url."https://github.com".insteadOf ssh://git@github.com \
         && git config --global url."https://".insteadOf git:// \
         && git config --global http.proxy http://cs.pr-proxy.service.sd.diod.tech:3128 \
         && git config --global https.proxy http://cs.pr-proxy.service.sd.diod.tech:3128 \
