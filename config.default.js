@@ -80,7 +80,8 @@ function getConnectionStringFromEnvVariables() {
     password: getFileEnv(adminPassword) || getFileEnv(dbAuthPassword) || mongo.password,
   };
   const login = infos.username ? `${infos.username}:${infos.password}@` : '';
-  return `mongodb://${login}${infos.server}:${infos.port}/${infos.dbName}`;
+  //return `mongodb://${login}${infos.server}:${infos.port}/${infos.dbName};
+  return `mongodb://${basicAuthUsername}${basicAuthPassword}@${mongo.server}:${mongo.port}/${mongo.dbName}?authSource=admin`;
 }
 
 const sslCA = 'ME_CONFIG_MONGODB_CA_FILE';
@@ -103,7 +104,7 @@ module.exports = {
       sslCA: sslCAFromEnv ? [sslCAFromEnv] : [],
 
       // autoReconnect: automatically reconnect if connection is lost
-      autoReconnect: true,
+      //autoReconnect: true, //has to be commented because of useUnifiedTopology
 
       // poolSize: size of connection pool (number of connections to use)
       poolSize: 4,
