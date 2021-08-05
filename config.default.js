@@ -89,7 +89,8 @@ const sslCAFromEnv = getBinaryFileEnv(sslCA);
 module.exports = {
   mongodb: {
     // if a connection string options such as server/port/etc are ignored
-    connectionString: mongo.connectionString || getConnectionStringFromEnvVariables(),
+    //connectionString: mongo.connectionString || getConnectionStringFromEnvVariables(),
+    connectionString: getConnectionStringFromEnvVariables(),
 
     connectionOptions: {
       // ssl: connect to the server using secure SSL

@@ -7,7 +7,7 @@ ENV http_proxy http://cs.pr-proxy.service.sd.diod.tech:3128/
 ENV https_proxy http://cs.pr-proxy.service.sd.diod.tech:3128/
 
 RUN set -x \
-	&& apt-get update && apt-get install -y ca-certificates curl \
+	&& apt-get update && apt-get install -y ca-certificates curl bind-utils \
 		--no-install-recommends \
 	&& apt-get install -y ssh-client \
 	&& apt-get install -y gpg \
