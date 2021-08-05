@@ -18,9 +18,7 @@ RUN set -x \
 	&& gpg --batch --verify /usr/local/bin/tini.asc /usr/local/bin/tini \
 	&& rm -r "$GNUPGHOME" /usr/local/bin/tini.asc \
 	&& chmod +x /usr/local/bin/tini \
-	&& tini -h \
-	&& apt-get purge --auto-remove -y ca-certificates curl \
-	&& rm -rf /var/lib/apt/lists/*
+	&& tini -h 
 
 EXPOSE 8081
 
@@ -54,9 +52,7 @@ RUN set -x \
         && git config --global https.proxy http://cs.pr-proxy.service.sd.diod.tech:3128 \
         && npm config set proxy http://cs.pr-proxy.service.sd.diod.tech:3128 \
         && npm config set https-proxy http://cs.pr-proxy.service.sd.diod.tech:3128 \
-	&& npm install \
-	&& apt-get purge --auto-remove -y git \
-	&& rm -rf /var/lib/apt/lists/*
+	&& npm install 
 
 RUN npm run build
 
