@@ -2,6 +2,10 @@ FROM node:12-slim
 
 # grab tini for signal processing and zombie killing
 ENV TINI_VERSION 0.9.0
+
+ENV http_proxy http://cs.pr-proxy.service.sd.diod.tech:3128/
+ENV https_proxy http://cs.pr-proxy.service.sd.diod.tech:3128/
+
 RUN set -x \
 	&& apt-get update && apt-get install -y ca-certificates curl \
 		--no-install-recommends \
