@@ -6,9 +6,9 @@ let mongo = {
   // It is RECOMMENDED to use connectionString instead of individual params, other options will be removed later.
   // More info here: https://docs.mongodb.com/manual/reference/connection-string/
   connectionString: process.env.ME_CONFIG_MONGODB_SERVER ? '' : process.env.ME_CONFIG_MONGODB_URL,
-  host: '127.0.0.1',
-  port: '27017',
-  dbName: '',
+  host: process.env.MONGODB_SERVICE_HOST ? process.env.MONGODB_SERVICE_HOST :'127.0.0.1',
+  port: process.env.MONGODB_SERVICE_PORT ? process.env.MONGODB_SERVICE_PORT : '27017',
+  dbName: process.env.MONGODB_DATABASE ? process.env.MONGODB_DATABASE : '',
 };
 
 // Accessing Bluemix variable to get MongoDB info
@@ -20,12 +20,12 @@ if (process.env.VCAP_SERVICES) {
   }
 }
 
-const basicAuthUsername = 'ME_CONFIG_BASICAUTH_USERNAME';
-const basicAuthPassword = 'ME_CONFIG_BASICAUTH_PASSWORD';
-const adminUsername = 'ME_CONFIG_MONGODB_ADMINUSERNAME';
-const adminPassword = 'ME_CONFIG_MONGODB_ADMINPASSWORD';
-const dbAuthUsername = 'ME_CONFIG_MONGODB_AUTH_USERNAME';
-const dbAuthPassword = 'ME_CONFIG_MONGODB_AUTH_PASSWORD';
+const basicAuthUsername = process.env.MONGODB_USER;
+const basicAuthPassword = process.env.MONGODB_PASSWORD;
+const adminUsername = 'admin';
+const adminPassword = process.env.MONGODB_ADMIN_PASSWORD;
+const dbAuthUsername = process.env.MONGODB_USER;
+const dbAuthPassword = process.env.MONGODB_PASSWORD;
 
 function getFile(filePath) {
   if (typeof filePath !== 'undefined' && filePath) {
