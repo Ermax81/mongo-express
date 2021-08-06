@@ -81,7 +81,8 @@ function getConnectionStringFromEnvVariables() {
   };
   const login = infos.username ? `${infos.username}:${infos.password}@` : '';
   //return `mongodb://${login}${infos.server}:${infos.port}/${infos.dbName};
-  return `mongodb://${basicAuthUsername}:${basicAuthPassword}@${mongo.host}:${mongo.port}/${mongo.dbName}?authSource=admin`;
+  //return `mongodb://${basicAuthUsername}:${basicAuthPassword}@${mongo.host}:${mongo.port}/${mongo.dbName}?authSource=admin`;
+  return `mongodb://${basicAuthUsername}:${basicAuthPassword}@${mongo.host}:${mongo.port}/${mongo.dbName}`;
 }
 
 const sslCA = 'ME_CONFIG_MONGODB_CA_FILE';
