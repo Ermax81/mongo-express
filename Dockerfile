@@ -23,10 +23,12 @@ RUN set -x \
 EXPOSE 8081
 
 # override some config defaults with values that will work better for docker
+# ME_CONFIG_MONGODB_ENABLE_ADMIN="false" to not have error like
+#  MongoError: not authorized on admin to execute command { listDatabases: 1, lsid: { id: UUID("5546bf2e-3981-404e-a5fd-d2fd97e93ae9") }, $db: "admin" }
 ENV ME_CONFIG_EDITORTHEME="default" \
     ME_CONFIG_MONGODB_SERVER="mongodb" \
     ME_CONFIG_MONGODB_URL="mongodb://mongo:27017" \
-    ME_CONFIG_MONGODB_ENABLE_ADMIN="true" \
+    ME_CONFIG_MONGODB_ENABLE_ADMIN="false" \
     ME_CONFIG_BASICAUTH_USERNAME="" \
     ME_CONFIG_BASICAUTH_PASSWORD="" \
     ME_CONFIG_BASICAUTH_USERNAME_FILE="" \
